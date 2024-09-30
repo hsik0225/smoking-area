@@ -1,0 +1,82 @@
+logging:
+  level:
+    org.springframework.web.servlet: info
+    org.springframework.boot.actuate: off
+    org.springframework.web: debug
+    org.springframework.boot: info
+    org.springframework.orm.jpa: debug
+    org.springframework.transaction: debug
+    org.hibernate.SQL: debug
+    org.hibernate.type: off
+    org.hibernate.tool.schema: error
+    com.zaxxer.hikari: error
+    io.swagger.models.parameters.AbstractSerializableParameter: error
+    com.hsik: debug
+    org.springframework.data.redis: debug
+
+server:
+  error:
+    include-stacktrace: always
+    whitelabel:
+      enabled: false
+  compression:
+    enabled: true
+    mime-types: application/json,application/xml,text/html,text/xml,text/plain
+  port: 10500
+  shutdown: graceful
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  docker:
+    compose:
+      lifecycle-management: start_only
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        format_sql: true
+        dialect:
+          storage_engine: innodb
+
+  datasource:
+    hikari:
+      connection-test-query: SELECT 1 FROM DUAL
+      minimum-idle: 3
+      maximum-pool-size: 30
+      pool-name: SpringBootHikariCP
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:mariadb://127.0.0.1:10550/boilerplate?serverTimezone=Asia/Seoul
+    username: local
+    password: local
+
+  flyway:
+    baseline-on-migrate: true
+    out-of-order: true
+  output:
+    ansi:
+      enabled: always
+  data:
+    redis:
+      cluster:
+        nodes: localhost:10650,localhost:10651,localhost:10652
+      password: local
+      timeout: 3000ms
+      connect-timeout: 3000ms
+      lettuce:
+        cluster:
+          refresh:
+            adaptive: true
+            period: 60s
+
+sentry:
+  environment: local
+
+springdoc:
+  show-actuator: false
+  swagger-ui:
+    enabled: true
+    disable-swagger-default-url: true
+    display-request-duration: true
