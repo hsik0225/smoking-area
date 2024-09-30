@@ -1,4 +1,4 @@
-package com.hsik.boilerplate.common
+package com.hsik.smoking.common
 
 open class Reply<T>(
     private val content: T,

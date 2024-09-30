@@ -1,4 +1,4 @@
-package com.hsik.boilerplate.config
+package com.hsik.smoking.config
 
 import io.sentry.Hint
 import io.sentry.IScopes

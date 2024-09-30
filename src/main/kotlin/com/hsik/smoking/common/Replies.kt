@@ -1,4 +1,4 @@
-package com.hsik.boilerplate.common
+package com.hsik.smoking.common
 
 import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.annotation.JsonProperty

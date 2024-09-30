@@ -1,4 +1,4 @@
-package com.hsik.boilerplate.domain
+package com.hsik.smoking.domain
 
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity

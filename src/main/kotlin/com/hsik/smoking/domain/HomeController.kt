@@ -1,7 +1,7 @@
-package com.hsik.boilerplate.domain
+package com.hsik.smoking.domain
 
-import com.hsik.boilerplate.common.Reply
-import com.hsik.boilerplate.common.toReply
+import com.hsik.smoking.common.Reply
+import com.hsik.smoking.common.toReply
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
 

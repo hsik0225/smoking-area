@@ -1,11 +1,11 @@
-package com.hsik.boilerplate
+package com.hsik.smoking
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class BoilerplateApplication
+class SmokingApplication
 
 fun main(args: Array<String>) {
-    runApplication<BoilerplateApplication>(*args)
+    runApplication<SmokingApplication>(*args)
 }

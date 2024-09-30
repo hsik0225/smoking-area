@@ -11,7 +11,7 @@ logging:
     org.hibernate.tool.schema: error
     com.zaxxer.hikari: error
     io.swagger.models.parameters.AbstractSerializableParameter: error
-    com.hsik: debug
+    com.hsik.smoking: debug
     org.springframework.data.redis: debug
 
 server:
