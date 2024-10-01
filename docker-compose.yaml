@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  mysql:
+    image: 'mongo:latest'
+    ports:
+      - "10640:27017"
+  redis-cluster:
+    image: 'grokzen/redis-cluster:latest'
+    environment:
+      IP: '127.0.0.1'
+      INITIAL_PORT: 10650
+    ports:
+      - '10650-10655:10650-10655'

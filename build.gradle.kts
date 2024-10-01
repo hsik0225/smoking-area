@@ -47,8 +47,8 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     developmentOnly("org.springframework.boot:spring-boot-docker-compose")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
     implementation("org.springframework.boot:spring-boot-starter-validation")
-    implementation("org.springframework.data:spring-data-envers")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
     implementation("org.springframework.boot:spring-boot-starter-undertow") {
         exclude("io.undertow", "undertow-websockets-jsr")
@@ -59,9 +59,6 @@ dependencies {
     implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310")
     implementation("com.fasterxml.jackson.datatype:jackson-datatype-jdk8")
 
-    // DB
-    implementation("com.mysql:mysql-connector-j")
-
     // Test
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude(group = "junit", module = "junit")
@@ -70,6 +67,11 @@ dependencies {
     testImplementation("io.kotest:kotest-runner-junit5-jvm:5.9.1")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
     testImplementation("com.h2database:h2")
+    testImplementation(platform("org.testcontainers:testcontainers-bom:1.20.2"))
+    testImplementation("org.testcontainers:testcontainers")
+    testImplementation("org.testcontainers:junit-jupiter")
+    testImplementation("org.testcontainers:mongodb")
+
 
     // Other
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0")
