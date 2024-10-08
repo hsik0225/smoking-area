@@ -3,15 +3,18 @@ package com.hsik.smoking.domain.area
 import org.bson.types.ObjectId
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
-import java.time.LocalDate
 import java.time.LocalDateTime
 
 /**
  * 흡연소
  */
 @Document
-class Area {
-
+class Area(
+    /**
+     * 주소
+     */
+    var address: String,
+) {
     @Id
     var id: ObjectId = ObjectId()
         private set
@@ -29,19 +32,14 @@ class Area {
         private set
 
     /**
-     * 공공 데이터 포탈에서 데이터를 수집/수정한 일자
+     * 공공 데이터 포탈에서 데이터를 수집/수정한 일시
      */
-    var metadataUpdateDate: LocalDate? = null
-
-    /**
-     * 주소
-     */
-    var address: String? = null
+    var metadataUpdateDateTime: LocalDateTime? = null
 
     /**
      * 위도
      */
-    var langitude: Double? = null
+    var latitude: Double? = null
 
     /**
      * 경도
@@ -54,18 +52,26 @@ class Area {
     var manager: String? = null
 
     /**
-     * 운영 상태
-     */
-    var status: Status? = null
-
-    /**
      * 장소에 대한 설명
      */
     var description: String? = null
 
-    enum class Status(val desc: String) {
+    /**
+     * 운영 상태
+     */
+    var status: Status = Status.OPEN
+        private set
+
+    /**
+     * 운영 상태 변경 이유
+     */
+    var cause: String? = null
+
+    enum class Status(
+        val desc: String,
+    ) {
         OPEN("지도에 노출"),
         HIDE("지도에 미노출"),
-        CLOSED("폐쇄")
+        CLOSED("폐쇄"),
     }
 }
