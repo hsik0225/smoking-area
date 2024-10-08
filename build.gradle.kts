@@ -22,10 +22,8 @@ java {
     }
 }
 
-configurations {
-    compileOnly {
-        extendsFrom(configurations.annotationProcessor.get())
-    }
+configurations.compileOnly {
+    extendsFrom(configurations.annotationProcessor.get())
 }
 
 repositories {
@@ -64,11 +62,11 @@ dependencies {
         exclude(group = "junit", module = "junit")
     }
     testImplementation("org.springframework.boot:spring-boot-starter-hateoas")
+    testImplementation("org.springframework.boot:spring-boot-testcontainers")
     testImplementation("io.kotest:kotest-runner-junit5-jvm:5.9.1")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
     testImplementation("com.h2database:h2")
     testImplementation(platform("org.testcontainers:testcontainers-bom:1.20.2"))
-    testImplementation("org.testcontainers:testcontainers")
     testImplementation("org.testcontainers:junit-jupiter")
     testImplementation("org.testcontainers:mongodb")
 
@@ -78,10 +76,8 @@ dependencies {
     implementation("org.apache.httpcomponents.client5:httpclient5:5.4")
 }
 
-configurations {
-    all {
-        exclude("org.springframework.boot", "spring-boot-starter-tomcat")
-    }
+configurations.all {
+    exclude("org.springframework.boot", "spring-boot-starter-tomcat")
 }
 
 noArg {
