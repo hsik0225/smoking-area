@@ -19,6 +19,9 @@ class SmokingArea(
     var id: ObjectId = ObjectId()
         private set
 
+    var townId: ObjectId? = null
+        private set
+
     /**
      * 생성 시각
      */
@@ -66,6 +69,11 @@ class SmokingArea(
      * 운영 상태 변경 이유
      */
     var cause: String? = null
+
+    fun setTown(townId: ObjectId): SmokingArea {
+        this.townId = townId
+        return this
+    }
 
     enum class Status(
         val desc: String,
