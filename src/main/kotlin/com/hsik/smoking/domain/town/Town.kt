@@ -59,5 +59,6 @@ class Town(
 
     fun add(smokingArea: SmokingArea) {
         this.smokingAreas.add(smokingArea)
+        smokingArea.setTown(this.id)
     }
 }

@@ -17,6 +17,7 @@ class SmokingAreaResources {
             val modifiedAt: LocalDateTime,
             val status: SmokingArea.Status,
             val address: String,
+            val townId: String? = null,
             val metaUpdateDateTime: LocalDateTime? = null,
             val latitude: Double? = null,
             val longitude: Double? = null,
@@ -26,19 +27,22 @@ class SmokingAreaResources {
         ) {
             companion object {
                 fun from(area: SmokingArea): Me =
-                    Me(
-                        id = area.id.toString(),
-                        createdAt = area.createdAt,
-                        modifiedAt = area.modifiedAt,
-                        status = area.status,
-                        address = area.address,
-                        metaUpdateDateTime = area.metadataUpdateDateTime,
-                        latitude = area.latitude,
-                        longitude = area.longitude,
-                        manager = area.manager,
-                        description = area.description,
-                        cause = area.cause,
-                    )
+                    area.run {
+                        Me(
+                            id = id.toString(),
+                            createdAt = createdAt,
+                            modifiedAt = modifiedAt,
+                            status = status,
+                            address = address,
+                            townId = townId.toString(),
+                            metaUpdateDateTime = metadataUpdateDateTime,
+                            latitude = latitude,
+                            longitude = longitude,
+                            manager = manager,
+                            description = description,
+                            cause = cause,
+                        )
+                    }
             }
         }
     }
