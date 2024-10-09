@@ -9,7 +9,7 @@ import java.time.LocalDateTime
  * 흡연소
  */
 @Document
-class Area(
+class SmokingArea(
     /**
      * 주소
      */

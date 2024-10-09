@@ -1,9 +1,9 @@
 package com.hsik.smoking.domain.area.api
 
-import com.hsik.smoking.domain.area.Area
+import com.hsik.smoking.domain.area.SmokingArea
 import java.time.LocalDateTime
 
-class AreaResources {
+class SmokingAreaResources {
     class Request {
         data class Me(
             val address: String,
@@ -15,7 +15,7 @@ class AreaResources {
             val id: String,
             val createdAt: LocalDateTime,
             val modifiedAt: LocalDateTime,
-            val status: Area.Status,
+            val status: SmokingArea.Status,
             val address: String,
             val metaUpdateDateTime: LocalDateTime? = null,
             val latitude: Double? = null,
@@ -25,7 +25,7 @@ class AreaResources {
             val cause: String? = null,
         ) {
             companion object {
-                fun from(area: Area): Me =
+                fun from(area: SmokingArea): Me =
                     Me(
                         id = area.id.toString(),
                         createdAt = area.createdAt,
