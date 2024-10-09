@@ -2,8 +2,8 @@ package com.hsik.smoking.domain.area.api
 
 import com.hsik.smoking.common.Reply
 import com.hsik.smoking.common.toReply
-import com.hsik.smoking.domain.area.AreaFinder
-import com.hsik.smoking.domain.area.AreaService
+import com.hsik.smoking.domain.area.SmokingAreaFinder
+import com.hsik.smoking.domain.area.SmokingAreaService
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
@@ -13,25 +13,25 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("/v1/areas")
-class AreaController(
-    private val areaFinder: AreaFinder,
-    private val areaService: AreaService,
+class SmokingAreaController(
+    private val smokingAreaFinder: SmokingAreaFinder,
+    private val smokingAreaService: SmokingAreaService,
 ) {
     @GetMapping("/{id}")
     fun findOne(
         @PathVariable("id") id: String,
-    ): Reply<AreaResources.Response.Me> {
-        val area = areaFinder.findById(id)
-        return AreaResources.Response.Me
+    ): Reply<SmokingAreaResources.Response.Me> {
+        val area = smokingAreaFinder.findById(id)
+        return SmokingAreaResources.Response.Me
             .from(area)
             .toReply()
     }
 
     @PostMapping
     fun add(
-        @RequestBody request: AreaResources.Request.Me,
+        @RequestBody request: SmokingAreaResources.Request.Me,
     ): Reply<String> =
-        areaService
+        smokingAreaService
             .add(request.address)
             .toString()
             .toReply()
