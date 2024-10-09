@@ -1,8 +1,6 @@
-package com.hsik.smoking.domain.api
+package com.hsik.smoking.domain.town.api
 
 import com.hsik.smoking.common.Reply
-import com.hsik.smoking.domain.area.api.SmokingAreaController
-import com.hsik.smoking.domain.area.api.SmokingAreaResources
 import com.hsik.smoking.util.fromJson
 import com.hsik.smoking.util.toJson
 import org.springframework.hateoas.server.mvc.linkTo
@@ -11,11 +9,11 @@ import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.get
 import org.springframework.test.web.servlet.post
 
-class AreaControllerFlow(
+class TownControllerFlow(
     private val mockMvc: MockMvc,
 ) {
-    fun findOne(id: String): SmokingAreaResources.Response.Me {
-        val uri = linkTo<SmokingAreaController> { findOne(id) }.toUri()
+    fun findOne(id: String): TownResources.Response.Me {
+        val uri = linkTo<TownController> { findOne(id) }.toUri()
         return mockMvc
             .get(uri)
             .andExpect {
@@ -23,13 +21,13 @@ class AreaControllerFlow(
             }.andReturn()
             .response
             .contentAsString
-            .fromJson<Reply<SmokingAreaResources.Response.Me>>()
+            .fromJson<Reply<TownResources.Response.Me>>()
             .content
     }
 
     fun add(address: String): String {
-        val request = SmokingAreaResources.Request.Me(address)
-        val uri = linkTo<SmokingAreaController> { add(request) }.toUri()
+        val request = TownResources.Request.Me(address)
+        val uri = linkTo<TownController> { add(request) }.toUri()
         return mockMvc
             .post(uri) {
                 contentType = MediaType.APPLICATION_JSON
