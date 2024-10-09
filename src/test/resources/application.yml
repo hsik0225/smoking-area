@@ -27,40 +27,11 @@ spring:
   main:
     allow-bean-definition-overriding: true
     lazy-initialization: true
-  datasource:
-    type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:h2:mem:default;DB_CLOSE_ON_EXIT=FALSE;AUTOCOMMIT=OFF;TRACE_LEVEL_FILE=2
-    username: sa
-    password:
-    driver-class-name: org.h2.Driver
-    hikari:
-      minimum-idle: 40
-      maximum-pool-size: 60
-      pool-name: SpringBootHikariCP
-  sql:
-    init:
-      platform: h2
-  jpa:
-    hibernate:
-      ddl-auto: create
-    properties:
-      hibernate:
-        format_sql: false
-        use_sql_comments: false
-        default_batch_fetch_size: 50
-        enable_lazy_load_no_trans: false
-      org:
-        hibernate:
-          envers:
-            audit_strategy: org.hibernate.envers.strategy.DefaultAuditStrategy
-    open-in-view: false
-
-  flyway:
-    enabled: false
-
-  output:
-    ansi:
-      enabled: always
+  data:
+    mongodb:
+      uri: mongodb://localhost:9064
+      database: smoking
+      auto-index-creation: true
 
 springdoc:
   show-actuator: false
