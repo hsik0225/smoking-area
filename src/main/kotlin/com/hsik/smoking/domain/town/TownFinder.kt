@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service
 class TownFinder(
     private val townRepository: TownRepository,
 ) {
-    fun findById(id: String): Town = townRepository.findByIdOrNull(ObjectId(id)) ?: throw ResourceNotFoundException(id, RESOURCE)
+    fun findById(id: String): Town = townRepository.findByIdOrNull(ObjectId(id)) ?: throw ResourceNotFoundException("ID", id, RESOURCE)
 
     companion object {
         const val RESOURCE = "타운(구)"

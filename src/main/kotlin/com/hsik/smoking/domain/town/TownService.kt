@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service
 class TownService(
     private val townRepository: TownRepository,
 ) {
-    fun add(name: String): ObjectId {
+    fun add(name: Town.TownName): ObjectId {
         val town = Town(name)
         return townRepository.save(town).id
     }

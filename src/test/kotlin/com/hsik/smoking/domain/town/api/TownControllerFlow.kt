@@ -1,6 +1,7 @@
 package com.hsik.smoking.domain.town.api
 
 import com.hsik.smoking.common.Reply
+import com.hsik.smoking.domain.town.Town
 import com.hsik.smoking.util.fromJson
 import com.hsik.smoking.util.toJson
 import org.springframework.hateoas.server.mvc.linkTo
@@ -25,8 +26,8 @@ class TownControllerFlow(
             .content
     }
 
-    fun add(address: String): String {
-        val request = TownResources.Request.Me(address)
+    fun add(name: Town.TownName): String {
+        val request = TownResources.Request.Me(name = name)
         val uri = linkTo<TownController> { add(request) }.toUri()
         return mockMvc
             .post(uri) {

@@ -1,6 +1,7 @@
 package com.hsik.smoking.domain.town.api
 
 import com.hsik.smoking.config.FlowTest
+import com.hsik.smoking.domain.town.Town
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
@@ -13,7 +14,7 @@ class TownControllerTest : FlowTest() {
         val townControllerFlow = TownControllerFlow(mockMvc)
 
         // 생성
-        val name = "동대문구"
+        val name = Town.TownName.DONGDAEMUN_GU
         val id: String = assertDoesNotThrow { townControllerFlow.add(name) }
 
         // 단일 조회
