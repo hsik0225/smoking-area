@@ -1,4 +1,4 @@
-package com.hsik.smoking.domain.town.area
+package com.hsik.smoking.domain.area
 
 import org.bson.types.ObjectId
 import org.springframework.data.annotation.Id

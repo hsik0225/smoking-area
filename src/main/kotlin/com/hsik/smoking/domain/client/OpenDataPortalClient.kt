@@ -1,4 +1,4 @@
-package com.hsik.smoking.domain.town.client
+package com.hsik.smoking.domain.client
 
 interface OpenDataPortalClient {
     fun findAllSmokingAreaInDongdaemunGu(): List<OpenDataPortalResources.SmokingArea.DongdaemunGu>

@@ -1,6 +1,6 @@
-package com.hsik.smoking.domain.town.area.repository
+package com.hsik.smoking.domain.area.repository
 
-import com.hsik.smoking.domain.town.area.SmokingArea
+import com.hsik.smoking.domain.area.SmokingArea
 import org.bson.types.ObjectId
 import org.springframework.data.mongodb.repository.MongoRepository
 
