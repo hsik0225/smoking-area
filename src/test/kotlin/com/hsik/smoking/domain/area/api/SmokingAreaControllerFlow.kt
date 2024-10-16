@@ -1,6 +1,7 @@
 package com.hsik.smoking.domain.area.api
 
 import com.hsik.smoking.common.Reply
+import com.hsik.smoking.domain.area.SmokingArea
 import com.hsik.smoking.util.fromJson
 import com.hsik.smoking.util.toJson
 import org.springframework.hateoas.server.mvc.linkTo
@@ -8,8 +9,9 @@ import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.get
 import org.springframework.test.web.servlet.post
+import org.springframework.test.web.servlet.put
 
-class AreaControllerFlow(
+class SmokingAreaControllerFlow(
     private val mockMvc: MockMvc,
 ) {
     fun findOne(areaId: String): SmokingAreaResources.Response.Me {
@@ -25,8 +27,11 @@ class AreaControllerFlow(
             .content
     }
 
-    fun add(address: String): String {
-        val request = SmokingAreaResources.Request.Me(address)
+    fun add(
+        townName: SmokingArea.TownName,
+        address: String,
+    ): String {
+        val request = SmokingAreaResources.Request.Me(townName, address)
         val uri = linkTo<SmokingAreaController> { add(request) }.toUri()
         return mockMvc
             .post(uri) {
@@ -39,5 +44,14 @@ class AreaControllerFlow(
             .contentAsString
             .fromJson<Reply<String>>()
             .content
+    }
+
+    fun sync(townName: SmokingArea.TownName) {
+        val uri = linkTo<SmokingAreaController> { sync(townName) }.toUri()
+        mockMvc
+            .put(uri)
+            .andExpect {
+                status { is2xxSuccessful() }
+            }
     }
 }

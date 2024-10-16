@@ -6,6 +6,7 @@ import java.time.LocalDateTime
 class SmokingAreaResources {
     class Request {
         data class Me(
+            val name: SmokingArea.TownName,
             val address: String,
         )
     }

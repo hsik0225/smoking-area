@@ -13,6 +13,7 @@ logging:
     io.swagger.models.parameters.AbstractSerializableParameter: error
     com.hsik.smoking: debug
     org.springframework.data.redis: debug
+    org.springframework.data.mongodb.core.MongoTemplate: debug
 
 server:
   error:

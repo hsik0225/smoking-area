@@ -11,13 +11,17 @@ import java.time.LocalDateTime
 @Document
 class SmokingArea(
     /**
-     * 오픈 API 서버 측에서 설정한 흡연 구역 ID
+     * 흡연 구역이 위치한 도시 이름
      */
-    var referenceId: Long? = null,
+    var name: TownName,
     /**
      * 주소
      */
     var address: String,
+    /**
+     * 오픈 API 서버 측에서 설정한 흡연 구역 ID
+     */
+    var referenceId: Long? = null,
     /**
      * 운영 관리자
      */
@@ -30,8 +34,6 @@ class SmokingArea(
     @Id
     var id: ObjectId = ObjectId()
         private set
-
-    var name: TownName? = null
 
     /**
      * 생성 시각
