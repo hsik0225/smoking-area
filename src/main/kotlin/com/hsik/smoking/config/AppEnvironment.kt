@@ -12,6 +12,6 @@ class AppEnvironment {
         var host: String = "localhost",
         var connectionTimeout: Long = 1,
         var readTimeout: Long = 1,
-        var useDummy: Boolean = false,
+        var useDummy: Boolean = true,
     )
 }
