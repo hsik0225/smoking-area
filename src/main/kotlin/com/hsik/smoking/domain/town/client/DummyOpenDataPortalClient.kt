@@ -3,9 +3,9 @@ package com.hsik.smoking.domain.town.client
 import kotlin.random.Random
 
 class DummyOpenDataPortalClient : OpenDataPortalClient {
-    override fun findAllSmokingAreaByDongDaemungu(): List<OpenDataPortalResources.SmokingArea.DongDaeMunGu> =
+    override fun findAllSmokingAreaInDongdaemunGu(): List<OpenDataPortalResources.SmokingArea.DongdaemunGu> =
         listOf(
-            OpenDataPortalResources.SmokingArea.DongDaeMunGu(
+            OpenDataPortalResources.SmokingArea.DongdaemunGu(
                 id = Random.nextLong(),
                 type = "완전폐쇄형",
                 address = "무학로 테스트길 36로 옥상",
@@ -15,7 +15,7 @@ class DummyOpenDataPortalClient : OpenDataPortalClient {
                 manager = "테스트 카페",
                 metadataUpdateDateTime = "2021-10-27",
             ),
-            OpenDataPortalResources.SmokingArea.DongDaeMunGu(
+            OpenDataPortalResources.SmokingArea.DongdaemunGu(
                 id = Random.nextLong(),
                 type = "개방형",
                 address = "무학로 테스트길 26로 1층",

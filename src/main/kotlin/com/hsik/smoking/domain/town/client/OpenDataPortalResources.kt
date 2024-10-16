@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonAlias
 
 class OpenDataPortalResources {
     class SmokingArea {
-        data class DongDaeMunGu(
+        data class DongdaemunGu(
             @JsonAlias("연번")
             val id: Long,
             @JsonAlias("시설형태")
