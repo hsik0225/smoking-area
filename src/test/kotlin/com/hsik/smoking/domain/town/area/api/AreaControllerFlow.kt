@@ -12,11 +12,8 @@ import org.springframework.test.web.servlet.post
 class AreaControllerFlow(
     private val mockMvc: MockMvc,
 ) {
-    fun findOne(
-        townId: String,
-        areaId: String,
-    ): SmokingAreaResources.Response.Me {
-        val uri = linkTo<SmokingAreaController> { findOne(townId, areaId) }.toUri()
+    fun findOne(areaId: String): SmokingAreaResources.Response.Me {
+        val uri = linkTo<SmokingAreaController> { findOne(areaId) }.toUri()
         return mockMvc
             .get(uri)
             .andExpect {
@@ -28,12 +25,9 @@ class AreaControllerFlow(
             .content
     }
 
-    fun add(
-        townId: String,
-        address: String,
-    ): String {
+    fun add(address: String): String {
         val request = SmokingAreaResources.Request.Me(address)
-        val uri = linkTo<SmokingAreaController> { add(townId, request) }.toUri()
+        val uri = linkTo<SmokingAreaController> { add(request) }.toUri()
         return mockMvc
             .post(uri) {
                 contentType = MediaType.APPLICATION_JSON

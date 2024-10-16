@@ -12,17 +12,16 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("/v1/towns/{townId}/areas")
+@RequestMapping("/v1/areas")
 class SmokingAreaController(
     private val smokingAreaFinder: SmokingAreaFinder,
     private val smokingAreaService: SmokingAreaService,
 ) {
     @GetMapping("/{areaId}")
     fun findOne(
-        @PathVariable("townId") townId: String,
         @PathVariable("areaId") areaId: String,
     ): Reply<SmokingAreaResources.Response.Me> {
-        val area = smokingAreaFinder.findByTownIdAndAreaId(townId, areaId)
+        val area = smokingAreaFinder.findByAreaId(areaId)
         return SmokingAreaResources.Response.Me
             .from(area)
             .toReply()
@@ -30,11 +29,10 @@ class SmokingAreaController(
 
     @PostMapping
     fun add(
-        @PathVariable("townId") townId: String,
         @RequestBody request: SmokingAreaResources.Request.Me,
     ): Reply<String> =
         smokingAreaService
-            .add(townId, request.address)
+            .add(request.address)
             .toString()
             .toReply()
 }

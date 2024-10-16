@@ -1,8 +1,6 @@
 package com.hsik.smoking.domain.town.area.api
 
 import com.hsik.smoking.config.FlowTest
-import com.hsik.smoking.domain.town.Town
-import com.hsik.smoking.domain.town.api.TownControllerFlow
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
@@ -13,17 +11,13 @@ class AreaControllerTest : FlowTest() {
     @Test
     fun areaCrTest() {
         // Given
-        // 도시 생성
-        val townControllerFlow = TownControllerFlow(mockMvc)
-        val townId = townControllerFlow.add(Town.TownName.DONGDAEMUN_GU)
-
         // 흡연 구역 생성
         val areaControllerFlow = AreaControllerFlow(mockMvc)
         val address = "서울특별시 동대문구 무학로 테스트길 1-1"
-        val id: String = assertDoesNotThrow { areaControllerFlow.add(townId, address) }
+        val id: String = assertDoesNotThrow { areaControllerFlow.add(address) }
 
         // 단일 조회
-        val area = areaControllerFlow.findOne(townId, id)
+        val area = areaControllerFlow.findOne(id)
         area.id shouldBe id
         area.address shouldBe address
     }
