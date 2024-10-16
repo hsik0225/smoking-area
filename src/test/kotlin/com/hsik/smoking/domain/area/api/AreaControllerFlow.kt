@@ -1,6 +1,8 @@
 package com.hsik.smoking.domain.area.api
 
 import com.hsik.smoking.common.Reply
+import com.hsik.smoking.domain.town.area.api.SmokingAreaController
+import com.hsik.smoking.domain.town.area.api.SmokingAreaResources
 import com.hsik.smoking.util.fromJson
 import com.hsik.smoking.util.toJson
 import org.springframework.hateoas.server.mvc.linkTo

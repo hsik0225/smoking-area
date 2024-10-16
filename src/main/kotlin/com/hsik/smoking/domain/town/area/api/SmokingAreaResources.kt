@@ -1,6 +1,6 @@
-package com.hsik.smoking.domain.area.api
+package com.hsik.smoking.domain.town.area.api
 
-import com.hsik.smoking.domain.area.SmokingArea
+import com.hsik.smoking.domain.town.area.SmokingArea
 import java.time.LocalDateTime
 
 class SmokingAreaResources {

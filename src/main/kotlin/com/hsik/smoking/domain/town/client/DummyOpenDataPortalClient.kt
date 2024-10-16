@@ -1,4 +1,4 @@
-package com.hsik.smoking.domain.area.client
+package com.hsik.smoking.domain.town.client
 
 import kotlin.random.Random
 

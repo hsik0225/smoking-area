@@ -1,4 +1,4 @@
-package com.hsik.smoking.domain.area.client
+package com.hsik.smoking.domain.town.client
 
 import com.hsik.smoking.config.AppEnvironment
 import com.hsik.smoking.util.RestClient

@@ -1,6 +1,6 @@
 package com.hsik.smoking.domain.town
 
-import com.hsik.smoking.domain.area.SmokingArea
+import com.hsik.smoking.domain.town.area.SmokingArea
 import org.bson.types.ObjectId
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.DBRef
