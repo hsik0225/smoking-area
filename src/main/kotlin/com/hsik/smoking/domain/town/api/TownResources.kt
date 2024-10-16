@@ -6,7 +6,7 @@ import java.time.LocalDateTime
 class TownResources {
     class Request {
         data class Me(
-            val name: String,
+            val name: Town.TownName,
         )
     }
 
@@ -15,7 +15,7 @@ class TownResources {
             val id: String,
             val createdAt: LocalDateTime,
             val modifiedAt: LocalDateTime,
-            val name: String,
+            val name: Town.TownName,
             val status: Town.Status,
             val cause: String? = null,
         ) {

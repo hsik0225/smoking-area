@@ -16,7 +16,7 @@ class Town(
     /**
      * 이름
      */
-    var name: String,
+    var name: TownName,
 ) {
     @Id
     var id: ObjectId = ObjectId()
@@ -55,6 +55,12 @@ class Town(
         SHOW("지도에 노출"),
         HIDE("지도에 미노출"),
         DELETED("삭제"),
+    }
+
+    enum class TownName(
+        val korean: String,
+    ) {
+        DONGDAEMUN_GU("동대문구"),
     }
 
     fun add(smokingArea: SmokingArea) {

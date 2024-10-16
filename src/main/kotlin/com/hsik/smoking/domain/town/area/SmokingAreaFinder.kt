@@ -12,7 +12,7 @@ class SmokingAreaFinder(
     private val smokingAreaRepository: SmokingAreaRepository,
 ) {
     fun findById(id: String): SmokingArea =
-        smokingAreaRepository.findByIdOrNull(ObjectId(id)) ?: throw ResourceNotFoundException(id, RESOURCE)
+        smokingAreaRepository.findByIdOrNull(ObjectId(id)) ?: throw ResourceNotFoundException("ID", id, RESOURCE)
 
     fun findByTownIdAndAreaId(
         townId: String,
