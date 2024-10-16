@@ -1,9 +1,9 @@
-package com.hsik.smoking.domain.town.area.api
+package com.hsik.smoking.domain.area.api
 
 import com.hsik.smoking.common.Reply
 import com.hsik.smoking.common.toReply
-import com.hsik.smoking.domain.town.area.SmokingAreaFinder
-import com.hsik.smoking.domain.town.area.SmokingAreaService
+import com.hsik.smoking.domain.area.SmokingAreaFinder
+import com.hsik.smoking.domain.area.SmokingAreaService
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping

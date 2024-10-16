@@ -1,4 +1,4 @@
-package com.hsik.smoking.domain.town.area.api
+package com.hsik.smoking.domain.area.api
 
 import com.hsik.smoking.common.Reply
 import com.hsik.smoking.util.fromJson
