@@ -11,16 +11,27 @@ import java.time.LocalDateTime
 @Document
 class SmokingArea(
     /**
+     * 오픈 API 서버 측에서 설정한 흡연 구역 ID
+     */
+    var referenceId: Long? = null,
+    /**
      * 주소
      */
     var address: String,
+    /**
+     * 운영 관리자
+     */
+    var manager: String? = null,
+    /**
+     * 공공 데이터 포탈에서 데이터를 수집/수정한 일시
+     */
+    var metadataUpdateDateTime: String? = null,
 ) {
     @Id
     var id: ObjectId = ObjectId()
         private set
 
-    var townId: ObjectId? = null
-        private set
+    var name: TownName? = null
 
     /**
      * 생성 시각
@@ -35,11 +46,6 @@ class SmokingArea(
         private set
 
     /**
-     * 공공 데이터 포탈에서 데이터를 수집/수정한 일시
-     */
-    var metadataUpdateDateTime: LocalDateTime? = null
-
-    /**
      * 위도
      */
     var latitude: Double? = null
@@ -48,11 +54,6 @@ class SmokingArea(
      * 경도
      */
     var longitude: Double? = null
-
-    /**
-     * 운영 관리자
-     */
-    var manager: String? = null
 
     /**
      * 장소에 대한 설명
@@ -70,9 +71,10 @@ class SmokingArea(
      */
     var cause: String? = null
 
-    fun setTown(townId: ObjectId): SmokingArea {
-        this.townId = townId
-        return this
+    enum class TownName(
+        val korean: String,
+    ) {
+        DONGDAEMUN_GU("동대문구"),
     }
 
     enum class Status(
