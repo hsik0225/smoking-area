@@ -1,6 +1,6 @@
 package com.hsik.smoking.common
 
-import com.hsik.smoking.domain.area.SmokingArea
+import com.hsik.smoking.domain.town.area.SmokingArea
 
 fun SmokingArea.relativeOrThrow(townId: String): SmokingArea {
     if (this.townId.toString() != townId) {

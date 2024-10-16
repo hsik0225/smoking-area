@@ -1,7 +1,7 @@
 package com.hsik.smoking.client
 
 import com.hsik.smoking.config.FlowTest
-import com.hsik.smoking.domain.area.repository.SmokingAreaRepository
+import com.hsik.smoking.domain.town.area.repository.SmokingAreaRepository
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
