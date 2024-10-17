@@ -15,22 +15,8 @@ import org.springframework.test.web.servlet.put
 class SmokingAreaControllerFlow(
     private val mockMvc: MockMvc,
 ) {
-    fun findAll(): List<SmokingAreaResources.Response.Me> {
-        val uri = linkTo<SmokingAreaController> { findAll() }.toUri()
-        return mockMvc
-            .get(uri)
-            .andExpect {
-                status { is2xxSuccessful() }
-            }.andReturn()
-            .response
-            .contentAsString
-            .fromJson<Replies<SmokingAreaResources.Response.Me>>()
-            .collection
-            .toList()
-    }
-
-    fun findAllByName(name: SmokingArea.TownName): List<SmokingAreaResources.Response.Me> {
-        val uri = linkTo<SmokingAreaController> { findAllByTownName(name) }.toUri()
+    fun search(townName: SmokingArea.TownName? = null): List<SmokingAreaResources.Response.Me> {
+        val uri = linkTo<SmokingAreaController> { search(townName) }.toUri()
         return mockMvc
             .get(uri)
             .andExpect {

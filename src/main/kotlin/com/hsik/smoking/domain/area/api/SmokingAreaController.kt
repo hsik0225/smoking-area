@@ -24,18 +24,8 @@ class SmokingAreaController(
     private val smokingAreaSyncService: SmokingAreaSyncService,
 ) {
     @GetMapping
-    fun findAll(): Replies<SmokingAreaResources.Response.Me> {
-        val areas = smokingAreaFinder.findAll()
-        return SmokingAreaResources.Response.Me
-            .from(areas)
-            .toReplies()
-    }
-
-    @GetMapping("/name/{name}")
-    fun findAllByTownName(
-        @PathVariable name: SmokingArea.TownName,
-    ): Replies<SmokingAreaResources.Response.Me> {
-        val areas = smokingAreaFinder.findAllByTownName(name)
+    fun search(townName: SmokingArea.TownName? = null): Replies<SmokingAreaResources.Response.Me> {
+        val areas = smokingAreaFinder.search(townName)
         return SmokingAreaResources.Response.Me
             .from(areas)
             .toReplies()

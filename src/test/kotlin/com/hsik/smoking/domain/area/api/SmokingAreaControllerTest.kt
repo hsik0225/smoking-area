@@ -37,11 +37,11 @@ class SmokingAreaControllerTest : FlowTest() {
         area.address shouldBe address1
 
         // 전체 조회
-        val allOfSmokingAreas = smokingAreaControllerFlow.findAll()
+        val allOfSmokingAreas = smokingAreaControllerFlow.search()
         allOfSmokingAreas.shouldForExactly(2) { it.id == id1 || it.id == id2 }
 
         // 이름으로 전체 조회
-        val smokingAreas = smokingAreaControllerFlow.findAllByName(name)
+        val smokingAreas = smokingAreaControllerFlow.search(name)
         allOfSmokingAreas.shouldForExactly(2) { it.id == id1 || it.id == id2 }
         smokingAreas.shouldForAll { it.townName shouldBe name }
     }
