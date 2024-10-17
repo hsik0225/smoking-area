@@ -40,7 +40,7 @@ class SmokingAreaController(
             .toString()
             .toReply()
 
-    @PutMapping("/name/{name}")
+    @PutMapping("/name/{name}/sync")
     fun sync(
         @PathVariable name: SmokingArea.TownName,
     ): Reply<Unit> {
