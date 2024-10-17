@@ -13,3 +13,8 @@ class ResourceNotFoundException(
         resource: String,
     ) : this("[$fieldName: $fieldValue]를 가진 $resource 가 존재하지 않습니다.")
 }
+
+open class CommunicationException(
+    message: String,
+    val additionalInformation: Map<String, Any>? = null,
+) : RuntimeException(message)
