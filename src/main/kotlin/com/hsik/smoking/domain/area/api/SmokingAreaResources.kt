@@ -17,6 +17,7 @@ class SmokingAreaResources {
             val createdAt: LocalDateTime,
             val modifiedAt: LocalDateTime,
             val status: SmokingArea.Status,
+            val townName: SmokingArea.TownName,
             val address: String,
             val metaUpdateDateTime: String? = null,
             val latitude: Double? = null,
@@ -33,6 +34,7 @@ class SmokingAreaResources {
                             createdAt = createdAt,
                             modifiedAt = modifiedAt,
                             status = status,
+                            townName = name,
                             address = address,
                             metaUpdateDateTime = metadataUpdateDateTime,
                             latitude = latitude,
@@ -41,6 +43,11 @@ class SmokingAreaResources {
                             description = description,
                             cause = cause,
                         )
+                    }
+
+                fun from(areas: List<SmokingArea>): List<Me> =
+                    areas.map {
+                        from(it)
                     }
             }
         }

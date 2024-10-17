@@ -1,5 +1,6 @@
 package com.hsik.smoking.domain.area.api
 
+import com.hsik.smoking.common.Replies
 import com.hsik.smoking.common.Reply
 import com.hsik.smoking.domain.area.SmokingArea
 import com.hsik.smoking.util.fromJson
@@ -14,6 +15,34 @@ import org.springframework.test.web.servlet.put
 class SmokingAreaControllerFlow(
     private val mockMvc: MockMvc,
 ) {
+    fun findAll(): List<SmokingAreaResources.Response.Me> {
+        val uri = linkTo<SmokingAreaController> { findAll() }.toUri()
+        return mockMvc
+            .get(uri)
+            .andExpect {
+                status { is2xxSuccessful() }
+            }.andReturn()
+            .response
+            .contentAsString
+            .fromJson<Replies<SmokingAreaResources.Response.Me>>()
+            .collection
+            .toList()
+    }
+
+    fun findAllByName(name: SmokingArea.TownName): List<SmokingAreaResources.Response.Me> {
+        val uri = linkTo<SmokingAreaController> { findAllByTownName(name) }.toUri()
+        return mockMvc
+            .get(uri)
+            .andExpect {
+                status { is2xxSuccessful() }
+            }.andReturn()
+            .response
+            .contentAsString
+            .fromJson<Replies<SmokingAreaResources.Response.Me>>()
+            .collection
+            .toList()
+    }
+
     fun findOne(areaId: String): SmokingAreaResources.Response.Me {
         val uri = linkTo<SmokingAreaController> { findOne(areaId) }.toUri()
         return mockMvc
