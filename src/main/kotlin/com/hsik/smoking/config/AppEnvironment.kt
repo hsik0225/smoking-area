@@ -6,12 +6,14 @@ import org.springframework.boot.context.properties.ConfigurationProperties
 class AppEnvironment {
     val openDataPortal = OpenDataPortal()
 
-    class OpenDataPortal : ConnectionOptions()
+    class OpenDataPortal : ConnectionOptions() {
+        lateinit var apiKey: String
+    }
 
     open class ConnectionOptions(
         var host: String = "localhost",
-        var connectionTimeout: Long = 1,
-        var readTimeout: Long = 1,
+        var connectionTimeout: Long = 5,
+        var readTimeout: Long = 5,
         var useDummy: Boolean = true,
     )
 }

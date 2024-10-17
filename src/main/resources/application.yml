@@ -70,3 +70,8 @@ springdoc:
     enabled: true
     disable-swagger-default-url: true
     display-request-duration: true
+
+app:
+  open-data-portal:
+    host: https://api.odcloud.kr
+    api-key: test1234
