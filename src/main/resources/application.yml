@@ -31,14 +31,6 @@ spring:
   docker:
     compose:
       lifecycle-management: start_only
-  jpa:
-    hibernate:
-      ddl-auto: validate
-    properties:
-      hibernate:
-        format_sql: true
-        dialect:
-          storage_engine: innodb
 
   output:
     ansi:
