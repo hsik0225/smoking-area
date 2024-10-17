@@ -1,6 +1,8 @@
 package com.hsik.smoking.domain.area.api
 
+import com.hsik.smoking.common.Replies
 import com.hsik.smoking.common.Reply
+import com.hsik.smoking.common.toReplies
 import com.hsik.smoking.common.toReply
 import com.hsik.smoking.domain.area.SmokingArea
 import com.hsik.smoking.domain.area.SmokingAreaFinder
@@ -21,11 +23,29 @@ class SmokingAreaController(
     private val smokingAreaService: SmokingAreaService,
     private val smokingAreaSyncService: SmokingAreaSyncService,
 ) {
+    @GetMapping
+    fun findAll(): Replies<SmokingAreaResources.Response.Me> {
+        val areas = smokingAreaFinder.findAll()
+        return SmokingAreaResources.Response.Me
+            .from(areas)
+            .toReplies()
+    }
+
+    @GetMapping("/name/{name}")
+    fun findAllByTownName(
+        @PathVariable name: SmokingArea.TownName,
+    ): Replies<SmokingAreaResources.Response.Me> {
+        val areas = smokingAreaFinder.findAllByTownName(name)
+        return SmokingAreaResources.Response.Me
+            .from(areas)
+            .toReplies()
+    }
+
     @GetMapping("/{areaId}")
     fun findOne(
         @PathVariable("areaId") areaId: String,
     ): Reply<SmokingAreaResources.Response.Me> {
-        val area = smokingAreaFinder.findByAreaId(areaId)
+        val area = smokingAreaFinder.findById(areaId)
         return SmokingAreaResources.Response.Me
             .from(area)
             .toReply()

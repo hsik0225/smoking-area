@@ -15,3 +15,5 @@ open class Replies<T>(
 
     override fun iterator(): Iterator<T> = collection.iterator()
 }
+
+fun <T> List<T>.toReplies(): Replies<T> = Replies(this)
