@@ -5,8 +5,13 @@ import org.springframework.boot.context.properties.ConfigurationProperties
 @ConfigurationProperties("app")
 class AppEnvironment {
     val openDataPortal = OpenDataPortal()
+    val kakao = Kakao()
 
     class OpenDataPortal : ConnectionOptions() {
+        lateinit var apiKey: String
+    }
+
+    class Kakao : ConnectionOptions() {
         lateinit var apiKey: String
     }
 

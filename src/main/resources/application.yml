@@ -67,3 +67,7 @@ app:
   open-data-portal:
     host: https://api.odcloud.kr
     api-key: test1234
+
+  kakao:
+    host: https://dapi.kakao.com
+    api-key: test5678
