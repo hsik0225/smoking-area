@@ -5,6 +5,7 @@ import com.hsik.smoking.util.toJson
 import org.slf4j.LoggerFactory
 import org.springframework.data.redis.core.StringRedisTemplate
 import org.springframework.stereotype.Component
+import java.time.Duration
 
 @Component
 class TownCacheStore(
@@ -43,7 +44,10 @@ class TownCacheStore(
     ) {
         val townRedisKey = SmokingAreaKey().getKeyOfTown(key)
         try {
-            val result = stringRedisTemplate.opsForValue().setIfAbsent(townRedisKey, smokingAreasWithCoordinate.toJson())
+            val result =
+                stringRedisTemplate
+                    .opsForValue()
+                    .setIfAbsent(townRedisKey, smokingAreasWithCoordinate.toJson(), Duration.ofHours(1L))
             logger.debug("[CACHE] Redis cache set key:{}, result: {}", townRedisKey, result)
         } catch (e: Exception) {
             logger.error("[CACHE] Redis cache set failed: {}", townRedisKey, e)

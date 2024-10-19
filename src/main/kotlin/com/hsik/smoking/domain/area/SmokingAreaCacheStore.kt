@@ -6,6 +6,7 @@ import org.bson.types.ObjectId
 import org.slf4j.LoggerFactory
 import org.springframework.data.redis.core.StringRedisTemplate
 import org.springframework.stereotype.Component
+import java.time.Duration
 
 @Component
 class SmokingAreaCacheStore(
@@ -44,7 +45,10 @@ class SmokingAreaCacheStore(
     ) {
         val smokingAreaRedisKey = SmokingAreaKey().getKeyOfSmokingArea(key)
         try {
-            val result = stringRedisTemplate.opsForValue().setIfAbsent(smokingAreaRedisKey, smokingArea.toJson())
+            val result =
+                stringRedisTemplate
+                    .opsForValue()
+                    .setIfAbsent(smokingAreaRedisKey, smokingArea.toJson(), Duration.ofHours(1L))
             logger.debug("[CACHE] Redis cache set key:{}, result: {}", smokingAreaRedisKey, result)
         } catch (e: Exception) {
             logger.error("[CACHE] Redis cache set failed: {}", smokingAreaRedisKey, e)
