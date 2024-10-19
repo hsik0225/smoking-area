@@ -2,7 +2,7 @@ package com.hsik.smoking.domain.area.synchronizer
 
 import com.hsik.smoking.domain.area.SmokingAreaTemplate
 import com.hsik.smoking.domain.area.converter.DongdaemunGuSmokingAreaConverter
-import com.hsik.smoking.domain.client.OpenDataPortalClient
+import com.hsik.smoking.domain.client.government.OpenDataPortalClient
 
 class DongdaemunGuSynchronizer(
     private val openDataPortalClient: OpenDataPortalClient,

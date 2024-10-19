@@ -1,7 +1,7 @@
 package com.hsik.smoking.domain.area
 
 import com.hsik.smoking.domain.area.synchronizer.DongdaemunGuSynchronizer
-import com.hsik.smoking.domain.client.OpenDataPortalClient
+import com.hsik.smoking.domain.client.government.OpenDataPortalClient
 import org.springframework.stereotype.Service
 
 @Service
