@@ -30,8 +30,6 @@ spring:
     lazy-initialization: true
   data:
     mongodb:
-      uri: mongodb://localhost:9064
-      database: smoking
       auto-index-creation: true
 
 springdoc:

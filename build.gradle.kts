@@ -45,6 +45,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     developmentOnly("org.springframework.boot:spring-boot-docker-compose")
     implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
+    implementation("org.springframework.boot:spring-boot-starter-data-redis")
     implementation("org.springframework.boot:spring-boot-starter-validation")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
     implementation("org.springframework.boot:spring-boot-starter-undertow") {
@@ -67,6 +68,8 @@ dependencies {
     testImplementation(platform("org.testcontainers:testcontainers-bom:1.20.2"))
     testImplementation("org.testcontainers:junit-jupiter")
     testImplementation("org.testcontainers:mongodb")
+    testImplementation("com.redis:testcontainers-redis:2.2.2")
+    testImplementation("com.ninja-squad:springmockk:4.0.2")
 
     // Other
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0")

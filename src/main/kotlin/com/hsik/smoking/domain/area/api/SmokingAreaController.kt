@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
@@ -24,7 +25,9 @@ class SmokingAreaController(
     private val smokingAreaSyncService: SmokingAreaSyncService,
 ) {
     @GetMapping
-    fun search(townName: SmokingArea.TownName? = null): Replies<SmokingAreaResources.Response.Me> {
+    fun search(
+        @RequestParam townName: SmokingArea.TownName? = null,
+    ): Replies<SmokingAreaResources.Response.Me> {
         val areas = smokingAreaFinder.search(townName)
         return SmokingAreaResources.Response.Me
             .from(areas)
