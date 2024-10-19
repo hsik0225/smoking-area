@@ -1,7 +1,7 @@
 package com.hsik.smoking.domain.area.converter
 
 import com.hsik.smoking.domain.area.SmokingArea
-import com.hsik.smoking.domain.client.OpenDataPortalResources
+import com.hsik.smoking.domain.client.government.OpenDataPortalResources
 
 class DongdaemunGuSmokingAreaConverter(
     private val smokingAreas: List<OpenDataPortalResources.SmokingArea.DongdaemunGu>,

@@ -1,6 +1,6 @@
 package com.hsik.smoking.common
 
-import com.hsik.smoking.domain.client.OpenDataPortalResources
+import com.hsik.smoking.domain.client.government.OpenDataPortalResources
 import com.hsik.smoking.util.fromJson
 import io.kotest.matchers.collections.shouldHaveSize
 import org.junit.jupiter.api.DisplayName

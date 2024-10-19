@@ -1,4 +1,4 @@
-package com.hsik.smoking.domain.client
+package com.hsik.smoking.domain.client.government
 
 import com.hsik.smoking.common.OpenDataPortalReply
 import com.hsik.smoking.config.AppEnvironment
