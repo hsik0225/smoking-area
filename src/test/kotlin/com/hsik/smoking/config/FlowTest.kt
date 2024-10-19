@@ -13,7 +13,7 @@ import org.testcontainers.junit.jupiter.Testcontainers
 @Testcontainers
 @AutoConfigureMockMvc
 @SpringBootTest(
-    classes = [SmokingApplication::class, MockMvcCustomizer::class],
+    classes = [SmokingApplication::class, MockMvcCustomizer::class, TestRedisConfiguration::class],
     webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
 )
 abstract class FlowTest {
@@ -21,7 +21,7 @@ abstract class FlowTest {
     lateinit var mockMvc: MockMvc
 
     companion object {
-        private val MONGO_CONTAINER: MongoDBContainer = MongoDBContainer("mongo:latest").withReuse(true)
+        private val MONGO_CONTAINER: MongoDBContainer = MongoDBContainer("mongo:latest")
 
         init {
             MONGO_CONTAINER.start()

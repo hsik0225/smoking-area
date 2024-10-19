@@ -2,11 +2,7 @@ package com.hsik.smoking.domain.area
 
 import com.hsik.smoking.common.ResourceNotFoundException
 import com.hsik.smoking.domain.area.repository.SmokingAreaRepository
-import com.hsik.smoking.domain.client.kakao.KakaoClient
 import org.bson.types.ObjectId
-import org.springframework.data.mongodb.core.MongoTemplate
-import org.springframework.data.mongodb.core.query.Criteria
-import org.springframework.data.mongodb.core.query.Query
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
@@ -15,17 +11,23 @@ import org.springframework.transaction.annotation.Transactional
 @Transactional(readOnly = true)
 class SmokingAreaFinder(
     private val smokingAreaRepository: SmokingAreaRepository,
-    private val mongoTemplate: MongoTemplate,
-    private val kakaoClient: KakaoClient,
+    private val townCacheStore: TownCacheStore,
+    private val geocoder: Geocoder,
 ) {
     fun search(townName: SmokingArea.TownName? = null): List<SmokingArea> {
-        val query =
-            Query().apply {
-                townName?.let { Criteria.where("name").`is`(it) }
-            }
+        if (townName == null) {
+            val smokingAreas = smokingAreaRepository.findAll()
+            return geocoder.searchByAddress(smokingAreas)
+        }
 
-        val smokingAreas = mongoTemplate.find(query, SmokingArea::class.java)
-        return Geocoder(kakaoClient, smokingAreas).searchByAddress()
+        if (townCacheStore.hasKey(townName)) {
+            return townCacheStore.getValue(townName)
+        }
+
+        val smokingAreas = smokingAreaRepository.findAllByName(townName)
+        val smokingAreasWithCoordinate = geocoder.searchByAddress(smokingAreas)
+        townCacheStore.set(townName, smokingAreasWithCoordinate)
+        return smokingAreasWithCoordinate
     }
 
     fun findById(id: String): SmokingArea =
