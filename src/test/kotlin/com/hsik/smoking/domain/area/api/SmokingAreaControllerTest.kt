@@ -4,9 +4,10 @@ import com.hsik.smoking.config.FlowTest
 import com.hsik.smoking.domain.area.SmokingArea
 import com.hsik.smoking.domain.area.repository.SmokingAreaRepository
 import io.kotest.inspectors.shouldForAll
-import io.kotest.inspectors.shouldForExactly
+import io.kotest.matchers.collections.shouldExist
 import io.kotest.matchers.collections.shouldHaveSize
 import io.kotest.matchers.shouldBe
+import io.kotest.matchers.shouldNotBe
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
@@ -38,11 +39,13 @@ class SmokingAreaControllerTest : FlowTest() {
 
         // 전체 조회
         val allOfSmokingAreas = smokingAreaControllerFlow.search()
-        allOfSmokingAreas.shouldForExactly(2) { it.id == id1 || it.id == id2 }
+        allOfSmokingAreas.shouldExist { it.id == id1 }
+        allOfSmokingAreas.shouldExist { it.id == id2 }
 
         // 이름으로 전체 조회
         val smokingAreas = smokingAreaControllerFlow.search(name)
-        allOfSmokingAreas.shouldForExactly(2) { it.id == id1 || it.id == id2 }
+        allOfSmokingAreas.shouldExist { it.id == id1 }
+        allOfSmokingAreas.shouldExist { it.id == id2 }
         smokingAreas.shouldForAll { it.townName shouldBe name }
     }
 
@@ -58,5 +61,24 @@ class SmokingAreaControllerTest : FlowTest() {
 
         // Then
         smokingAreaRepository.findAll().shouldHaveSize(2)
+    }
+
+    @DisplayName("흡연 구역 조회 시 좌표 반환 테스트")
+    @Test
+    fun searchWithCoordinateTest() {
+        // Given
+        val townName = SmokingArea.TownName.DONGDAEMUN_GU
+        val smokingAreaControllerFlow = SmokingAreaControllerFlow(mockMvc)
+        smokingAreaControllerFlow.sync(townName)
+
+        // When
+        val smokingAreas = smokingAreaControllerFlow.search(townName)
+
+        // Then
+        smokingAreas.shouldForAll {
+            it.townName shouldBe townName
+            it.latitude shouldNotBe null
+            it.longitude shouldNotBe null
+        }
     }
 }
