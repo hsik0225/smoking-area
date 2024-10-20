@@ -1,55 +1,73 @@
+import {getSmokingAreas} from "./api.js";
+
 const wrapper = document.querySelector(".wrapper"),
     selectBtn = wrapper.querySelector(".select-btn"),
     options = wrapper.querySelector(".options");
 
 let towns = [
     {
-        name: "동대문구",
+        koreanName: "동대문구",
+        englishName: "DONGDAEMUN_GU",
         latitude: 37.571625,
         longitude: 127.0421417
     },
-    {
-        name: "종로구",
-        latitude: 37.57037778,
-        longitude: 126.9816417
-    }
 ];
 
 function addTown(selectedTown) {
-    console.log('addTown', selectedTown);
     options.innerHTML = "";
     towns.forEach(town => {
-        let isSelected = town.name === selectedTown ? "selected" : "";
-        let li = `<li onclick="updateName('${town.name}');drawMap(${town.latitude}, ${town.longitude})" class="${isSelected}">${town.name}</li>`;
-        options.insertAdjacentHTML("beforeend", li);
+        const li = document.createElement("li");
+        if (town.koreanName === selectedTown) {
+            li.classList.add("selected");
+        }
+        li.innerText = town.koreanName;
+        li.addEventListener("click", () => updateName(town));
+        li.addEventListener("click", () => drawMap(town));
+        options.appendChild(li);
     });
 }
 
-function updateName(townName) {
-    console.log('updateName', townName);
-    addTown(townName);
+function updateName(town) {
+    addTown(town.koreanName);
     wrapper.classList.remove("active");
-    selectBtn.firstElementChild.innerText = townName;
+    selectBtn.firstElementChild.innerText = town.koreanName;
 }
 
-function drawMap(latitude, longitude) {
-    console.log('drawMap', latitude, longitude);
+async function drawMap(town) {
     const mapOptions = {
-        center: N.LatLng(latitude, longitude),
+        center: N.LatLng(town.latitude, town.longitude),
         zoom: 16,
-        minZoom: 15,
+        minZoom: 13,
         maxZoom: 18,
     };
 
-    new N.Map('map', mapOptions);
+    const map = new N.Map('map', mapOptions);
+
+    await drawMarker(map, town);
+}
+
+async function drawMarker(map, town) {
+    const smokingAreas = await getSmokingAreas(town.englishName)
+    for (let i = 0; i < smokingAreas.length; i++) {
+        const smokingArea = smokingAreas[i];
+        if (smokingArea.latitude === null || smokingArea.longitude === null) {
+            continue;
+        }
+
+        new N.Marker({
+            position: N.LatLng(smokingArea.latitude, smokingArea.longitude),
+            map: map,
+        });
+    }
 }
 
 function initialize() {
-    const defaultTown = towns[0]
-    addTown()
-    updateName(defaultTown.name)
-    drawMap(defaultTown.latitude, defaultTown.longitude)
+    const defaultTown = towns[0];
+    addTown();
+    updateName(defaultTown);
+    drawMap(defaultTown);
 }
+
 initialize();
 
 selectBtn.addEventListener("click", () => wrapper.classList.toggle("active"));
