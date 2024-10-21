@@ -12,7 +12,11 @@ class SmokingAreaSyncService(
     fun sync(name: SmokingArea.TownName) {
         val synchronizer =
             when (name) {
-                SmokingArea.TownName.DONGDAEMUN_GU -> DongdaemunGuSynchronizer(openDataPortalClient, smokingAreaTemplate)
+                SmokingArea.TownName.DONGDAEMUN_GU ->
+                    DongdaemunGuSynchronizer(
+                        openDataPortalClient,
+                        smokingAreaTemplate,
+                    )
             }
         synchronizer.synchronize()
     }

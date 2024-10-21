@@ -17,7 +17,7 @@ class RestClient(
     fun get(
         url: String,
         headers: List<Pair<String, String>>? = null,
-        params: List<Pair<String, String>>? = null,
+        params: List<Pair<String, Any>>? = null,
     ): String {
         val query = params?.joinToString("&") { "${it.first}=${it.second}" }
         val uri = if (query.isNullOrBlank()) url else "$url?$query"

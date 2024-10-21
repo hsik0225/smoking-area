@@ -32,7 +32,7 @@ class SmokingArea(
     var metadataUpdateDateTime: String? = null,
 ) {
     @Id
-    var id: ObjectId = ObjectId()
+    var id: ObjectId? = null
         private set
 
     /**

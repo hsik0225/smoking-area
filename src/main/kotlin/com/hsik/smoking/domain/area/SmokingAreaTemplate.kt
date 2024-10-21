@@ -28,6 +28,7 @@ class SmokingAreaTemplate(
             val query =
                 Query().apply {
                     addCriteria(Criteria.where(SmokingArea::referenceId.name).`is`(it.referenceId))
+                    addCriteria(Criteria.where(SmokingArea::name.name).`is`(it.name))
                 }
 
             val document =
