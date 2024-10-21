@@ -17,6 +17,6 @@ class SmokingAreaService(
                 name = name,
                 address = address,
             )
-        return smokingAreaRepository.save(area).id
+        return smokingAreaRepository.save(area).id!!
     }
 }
