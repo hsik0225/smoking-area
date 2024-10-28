@@ -32,10 +32,6 @@ repositories {
 }
 
 dependencies {
-    // https://mvnrepository.com/artifact/io.sentry/sentry-bom
-    implementation("io.sentry:sentry-bom:8.0.0-alpha.4")
-    implementation("io.sentry:sentry-spring-boot-starter-jakarta:8.0.0-alpha.4")
-
     // Kotlin
     implementation("org.jetbrains.kotlin:kotlin-stdlib:2.0.20")
     runtimeOnly("org.jetbrains.kotlin:kotlin-reflect:2.0.20")
