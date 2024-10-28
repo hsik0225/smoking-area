@@ -35,9 +35,6 @@ spring:
       timeout: 3000ms
       connect-timeout: 3000ms
 
-sentry:
-  environment: local
-
 springdoc:
   show-actuator: false
   swagger-ui:
