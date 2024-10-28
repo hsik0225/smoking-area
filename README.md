@@ -29,7 +29,7 @@ git clone https://github.com/hsik0225/smoking-area.git
 
 ### 오픈 데이터 포탈, Kakao API 사용
 실제 오픈 데이터 포탈 API 혹은 Kakao API를 사용할 사용자들을 위한 설명서입니다.
-1. 오픈 데이터 포탈(https://www.data.go.kr/) 혹은 Kakao Developers(https://developers.kakao.com/)에서 API_KEY를 발급받습니다. 
+1. 오픈 데이터 포탈(https://www.data.go.kr/) 혹은 Kakao Developers(https://developers.kakao.com/) 에서 API_KEY를 발급받습니다. 
 2. 이 리포지토리를 클론합니다.
 ```bash
 git clone https://github.com/hsik0225/smoking-area.git
