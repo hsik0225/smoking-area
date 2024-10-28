@@ -49,13 +49,13 @@ git clone https://github.com/hsik0225/smoking-area.git
 # 변경 전
 ...
 app:
-    open-data-portal:
-        host: https://api.odcloud.kr
-        api-key: test1234
+  open-data-portal:
+    host: https://api.odcloud.kr
+    api-key: test1234
 
-    kakao:
-        host: https://dapi.kakao.com
-        api-key: test5678
+  kakao:
+    host: https://dapi.kakao.com
+    api-key: test5678
 
 # 변경 후
 ...
