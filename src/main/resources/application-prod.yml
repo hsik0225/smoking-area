@@ -37,7 +37,7 @@ spring:
 springdoc:
   show-actuator: false
   swagger-ui:
-    enabled: false
+    enabled: true
 
 app:
   open-data-portal:
