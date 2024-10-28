@@ -2,13 +2,11 @@ package com.hsik.smoking.config
 
 import io.lettuce.core.SocketOptions
 import io.lettuce.core.cluster.ClusterClientOptions
-import io.lettuce.core.cluster.ClusterTopologyRefreshOptions
 import org.springframework.boot.autoconfigure.data.redis.RedisProperties
 import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import org.springframework.data.redis.connection.RedisClusterConfiguration
-import org.springframework.data.redis.connection.RedisPassword
+import org.springframework.data.redis.connection.RedisStandaloneConfiguration
 import org.springframework.data.redis.connection.lettuce.LettuceClientConfiguration
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory
 import org.springframework.data.redis.core.StringRedisTemplate
@@ -36,18 +34,10 @@ class RedisConfiguration(
                                 .connectTimeout(properties.connectTimeout)
                                 .keepAlive(true)
                                 .build(),
-                        ).topologyRefreshOptions(
-                            ClusterTopologyRefreshOptions
-                                .builder()
-                                .enablePeriodicRefresh(properties.lettuce.cluster.refresh.period)
-                                .build(),
                         ).build(),
                 ).build()
 
-        val clusterConfiguration =
-            RedisClusterConfiguration(properties.cluster.nodes)
-                .apply { password = RedisPassword.of(properties.password) }
-
+        val clusterConfiguration = RedisStandaloneConfiguration(properties.host, properties.port)
         val factory = LettuceConnectionFactory(clusterConfiguration, clientConfiguration).apply { afterPropertiesSet() }
         return StringRedisTemplate(factory)
     }

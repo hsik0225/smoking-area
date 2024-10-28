@@ -31,6 +31,9 @@ spring:
   data:
     mongodb:
       auto-index-creation: true
+    redis:
+      timeout: 3000ms
+      connect-timeout: 3000ms
 
 springdoc:
   show-actuator: false
