@@ -37,7 +37,6 @@ dependencies {
     runtimeOnly("org.jetbrains.kotlin:kotlin-reflect:2.0.20")
 
     // Spring
-    implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("org.springframework.boot:spring-boot-starter-web")
     developmentOnly("org.springframework.boot:spring-boot-docker-compose")
     implementation("org.springframework.boot:spring-boot-starter-data-mongodb")

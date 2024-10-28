@@ -1,16 +1,8 @@
 logging:
   level:
     org.springframework.web.servlet: info
-    org.springframework.boot.actuate: off
     org.springframework.web: debug
     org.springframework.boot: info
-    org.springframework.orm.jpa: debug
-    org.springframework.transaction: debug
-    org.hibernate.SQL: debug
-    org.hibernate.type: off
-    org.hibernate.tool.schema: error
-    com.zaxxer.hikari: error
-    io.swagger.models.parameters.AbstractSerializableParameter: error
     com.hsik.smoking: debug
     org.springframework.data.redis: debug
     org.springframework.data.mongodb.core.MongoTemplate: debug

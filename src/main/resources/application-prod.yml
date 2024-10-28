@@ -1,12 +1,11 @@
 logging:
   level:
     org.springframework.web.servlet: info
-    org.springframework.boot.actuate: off
     org.springframework.web: info
     org.springframework.boot: info
-    io.swagger.models.parameters.AbstractSerializableParameter: error
-    com.hsik.smoking: info
     org.springframework.data.redis: info
+    org.springframework.data.mongodb.core.MongoTemplate: info
+    com.hsik.smoking: info
 
 server:
   error:
