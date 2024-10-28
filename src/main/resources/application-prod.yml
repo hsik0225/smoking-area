@@ -2,17 +2,11 @@ logging:
   level:
     org.springframework.web.servlet: info
     org.springframework.boot.actuate: off
-    org.springframework.web: debug
+    org.springframework.web: info
     org.springframework.boot: info
-    org.springframework.orm.jpa: debug
-    org.springframework.transaction: debug
-    org.hibernate.SQL: debug
-    org.hibernate.type: off
-    org.hibernate.tool.schema: error
-    com.zaxxer.hikari: error
     io.swagger.models.parameters.AbstractSerializableParameter: error
-    com.hsik.smoking: debug
-    org.springframework.data.redis: debug
+    com.hsik.smoking: info
+    org.springframework.data.redis: info
 
 server:
   error:
@@ -35,12 +29,9 @@ spring:
       enabled: always
   data:
     mongodb:
-      uri: mongodb://127.0.0.1:10640
-      database: smoking
       auto-index-creation: true
 
     redis:
-      port: 10650
       timeout: 3000ms
       connect-timeout: 3000ms
 
@@ -50,15 +41,13 @@ sentry:
 springdoc:
   show-actuator: false
   swagger-ui:
-    enabled: true
-    disable-swagger-default-url: true
-    display-request-duration: true
+    enabled: false
 
 app:
   open-data-portal:
     host: https://api.odcloud.kr
-    api-key: test1234
+    use-dummy: false
 
   kakao:
     host: https://dapi.kakao.com
-    api-key: test5678
+    use-dummy: false
