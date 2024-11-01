@@ -1,18 +1,11 @@
 logging:
   level:
     org.springframework.web.servlet: info
-    org.springframework.boot.actuate: off
     org.springframework.web: debug
     org.springframework.boot: info
-    org.springframework.orm.jpa: debug
-    org.springframework.transaction: debug
-    org.hibernate.SQL: debug
-    org.hibernate.type: off
-    org.hibernate.tool.schema: error
-    com.zaxxer.hikari: error
-    io.swagger.models.parameters.AbstractSerializableParameter: error
-    com.hsik.smoking: debug
     org.springframework.data.redis: debug
+    org.springframework.data.mongodb.core.MongoTemplate: debug
+    com.hsik.smoking: debug
 
 server:
   error:
@@ -26,19 +19,9 @@ server:
   shutdown: graceful
 
 spring:
-  main:
-    allow-bean-definition-overriding: true
   docker:
     compose:
       lifecycle-management: start_only
-  jpa:
-    hibernate:
-      ddl-auto: validate
-    properties:
-      hibernate:
-        format_sql: true
-        dialect:
-          storage_engine: innodb
 
   output:
     ansi:
@@ -50,19 +33,9 @@ spring:
       auto-index-creation: true
 
     redis:
-      cluster:
-        nodes: localhost:10650,localhost:10651,localhost:10652
-      password: local
+      port: 10650
       timeout: 3000ms
       connect-timeout: 3000ms
-      lettuce:
-        cluster:
-          refresh:
-            adaptive: true
-            period: 60s
-
-sentry:
-  environment: local
 
 springdoc:
   show-actuator: false
@@ -70,3 +43,12 @@ springdoc:
     enabled: true
     disable-swagger-default-url: true
     display-request-duration: true
+
+app:
+  open-data-portal:
+    host: https://api.odcloud.kr
+    api-key: test1234
+
+  kakao:
+    host: https://dapi.kakao.com
+    api-key: test5678

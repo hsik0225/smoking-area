@@ -22,10 +22,8 @@ java {
     }
 }
 
-configurations {
-    compileOnly {
-        extendsFrom(configurations.annotationProcessor.get())
-    }
+configurations.compileOnly {
+    extendsFrom(configurations.annotationProcessor.get())
 }
 
 repositories {
@@ -34,20 +32,15 @@ repositories {
 }
 
 dependencies {
-    // https://mvnrepository.com/artifact/io.sentry/sentry-bom
-    implementation("io.sentry:sentry-bom:8.0.0-alpha.4")
-    implementation("io.sentry:sentry-spring-boot-starter-jakarta:8.0.0-alpha.4")
-
     // Kotlin
     implementation("org.jetbrains.kotlin:kotlin-stdlib:2.0.20")
     runtimeOnly("org.jetbrains.kotlin:kotlin-reflect:2.0.20")
 
     // Spring
-    implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("org.springframework.boot:spring-boot-starter-web")
     developmentOnly("org.springframework.boot:spring-boot-docker-compose")
-    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
+    implementation("org.springframework.boot:spring-boot-starter-data-redis")
     implementation("org.springframework.boot:spring-boot-starter-validation")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
     implementation("org.springframework.boot:spring-boot-starter-undertow") {
@@ -64,34 +57,27 @@ dependencies {
         exclude(group = "junit", module = "junit")
     }
     testImplementation("org.springframework.boot:spring-boot-starter-hateoas")
+    testImplementation("org.springframework.boot:spring-boot-testcontainers")
     testImplementation("io.kotest:kotest-runner-junit5-jvm:5.9.1")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
-    testImplementation("com.h2database:h2")
     testImplementation(platform("org.testcontainers:testcontainers-bom:1.20.2"))
-    testImplementation("org.testcontainers:testcontainers")
     testImplementation("org.testcontainers:junit-jupiter")
     testImplementation("org.testcontainers:mongodb")
-
+    testImplementation("com.redis:testcontainers-redis:2.2.2")
+    testImplementation("com.ninja-squad:springmockk:4.0.2")
 
     // Other
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0")
     implementation("org.apache.httpcomponents.client5:httpclient5:5.4")
+    implementation("org.apache.httpcomponents.core5:httpcore5:5.3")
 }
 
-configurations {
-    all {
-        exclude("org.springframework.boot", "spring-boot-starter-tomcat")
-    }
+configurations.all {
+    exclude("org.springframework.boot", "spring-boot-starter-tomcat")
 }
 
 noArg {
     invokeInitializers = true
-}
-
-allOpen {
-    annotation("jakarta.persistence.Entity")
-    annotation("jakarta.persistence.MappedSuperclass")
-    annotation("jakarta.persistence.Embeddable")
 }
 
 tasks.check {

@@ -1,11 +1,11 @@
 logging:
   level:
     org.springframework.web.servlet: info
-    org.springframework.web: debug
+    org.springframework.web: info
     org.springframework.boot: info
-    com.hsik.smoking: debug
-    org.springframework.data.redis: debug
-    org.springframework.data.mongodb.core.MongoTemplate: debug
+    org.springframework.data.redis: info
+    org.springframework.data.mongodb.core.MongoTemplate: info
+    com.hsik.smoking: info
 
 server:
   error:
@@ -15,14 +15,21 @@ server:
   compression:
     enabled: true
     mime-types: application/json,application/xml,text/html,text/xml,text/plain
+  port: 10500
+  shutdown: graceful
 
 spring:
-  main:
-    allow-bean-definition-overriding: true
-    lazy-initialization: true
+  docker:
+    compose:
+      lifecycle-management: start_only
+
+  output:
+    ansi:
+      enabled: always
   data:
     mongodb:
       auto-index-creation: true
+
     redis:
       timeout: 3000ms
       connect-timeout: 3000ms
@@ -30,4 +37,13 @@ spring:
 springdoc:
   show-actuator: false
   swagger-ui:
-    enabled: false
+    enabled: true
+
+app:
+  open-data-portal:
+    host: https://api.odcloud.kr
+    use-dummy: false
+
+  kakao:
+    host: https://dapi.kakao.com
+    use-dummy: false
