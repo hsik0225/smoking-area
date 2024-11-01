@@ -19,7 +19,7 @@ https://smoking-area.rowan.ink
 このアプリケーションは以下の外部APIを使用しています。
 - オープンデータポータル API : 喫煙所情報の照会
 - Kakao Local API : 喫煙所の住所を緯度, 経度座標に変換
-- 네이버 지도 API : ブラウザにNaver地図を表示
+- Naver Maps API : ブラウザにNaver地図を表示
 
 ### 外部API未使用
 Naver地図をブラウザに表示するには、Naver Cloudから発行されたAPIキーが必要です。このセクションでは外部APIを使用しないため、ブラウザに地図は表示されず、アプリケーションのみが実行されます。
